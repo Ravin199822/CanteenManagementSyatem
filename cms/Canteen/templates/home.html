@@ -25,27 +25,47 @@
     padding-bottom: 5rem;
     background-color: #C7C8CA;
 }
+
+
+
+
+
+
+
     </style>
 </head>
 <body>
+{% csrf_token %}
+
 <h2>Order Items</h2><br><br>
-<form>
+
+<form action="/canteen/showitems" enctype="multipart/form-data" method="GET">
+    <div class="container">
+        <div class="form-group">
+            <label>I'm Looking for...</label>
+
+            <div class="form-group">
+                <select class="form-control" id="exampleFormControlSelect1" name="timing">
+                    <option disabled selected="selected">Select time period:</option>
+                    {% for i in times %}
+                    <option value="{{i}}">{{i}}</option>
+                    {% endfor %}
+                </select>
+            </div>
 
 
-    <div class="form-group">
-        <label>I'm Looking for...</label>
-        <select class="form-control">
-            <option>Breakfast</option>
-            <option>Lunch</option>
-            <option>Dinner</option>
-            <option>Today's Special</option>
-        </select></div>
-
-    <br>
-    <a class="btn btn-primary" href="/canteen/showitems">Submit</a>
-
-
+            <br>
+            <div class="form-group row">
+                <label class="col-sm-1 col-form-label"></label>
+                <div class="col-sm-4">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </form>
+<!--<a type="submit" value="click" class="btn btn-primary" href="/canteen/showitems">Submit</a>-->
+<!--<input  type = "submit" value="click">-->
 
 
 <!-- Optional JavaScript -->

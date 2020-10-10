@@ -27,85 +27,57 @@
 }
 
 
+
+
+
+
+
     </style>
 </head>
-<form>
-    <h2> Your Optional Meals </h2><br><br>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th scope="col">id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Category</th>
-            <th scope="col">Price</th>
-            <th scope="col">Description</th>
-            <th scope="col">Quantity</th>
+<form action="/canteen/payment" enctype="multipart/form-data" method="GET">
+    {% csrf_token %}
+    <div>
+        <h2> Your Optional Meals for {{time}} </h2><br><br>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">Price</th>
+                <th scope="col">Description</th>
+                <th scope="col">Quantity</th>
 
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td></td>
-            <td>
-                <div class="form-group">
-                    <select class="form-control" id="item1">
-                        <option>0</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td></td>
-            <td>
-                <div class="form-group">
-                    <select class="form-control" id="item2">
-                        <option>0</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td></td>
-            <td>
-                <div class="form-group">
-                    <select class="form-control" id="item3">
-                        <option>0</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                </div>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in food %}
+            <tr>
+                <th scope="row">{{i.item_id}}</th>
+                <td>{{i.name}}</td>
+                <td>{{i.category}}</td>
+                <td>{{i.price}}</td>
+                <td>{{i.desc}}</td>
+                <td>
+                    <div class="form-group">
+                        <select class="form-control" id="i.item_id" name=option_{{i.name}}>
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <br>
-    <a class="btn btn-primary" href="/canteen/payment">Make Payment</a>
+        <br>
+        <button class="btn btn-primary">Make Payment</button>
+    </div>
 </form>
 
 <!-- Optional JavaScript -->
