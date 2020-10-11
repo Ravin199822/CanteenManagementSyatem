@@ -9,35 +9,7 @@ def option(request):
     return render(request, "option.html")
 
 
-def orderhistory(request,):
-    order = Ordered_item.objects.all()
-    myorders = set()
-    contactno = request.session.get('contact_no')
-    for i in order:
-        # print(i)
-        if i.contact_no == contactno:
-            if i.order_status=="unserved":
-                myorders.add(i)
-    params = {"myorders": myorders}
-    return render(request, "orderhistory.html", params)
-
-def cancleorder(request,identity):
-    myorders=Ordered_item.objects.get(identity=identity)
-    myorders.delete()
-    order = Ordered_item.objects.all()
-    contactno = request.session.get('contact_no')
-    myorders = set()
-    for i in order:
-        # print(i)
-        if i.contact_no == contactno:
-            myorders.add(i)
-    params = {"myorders": myorders}
-    return render(request, "orderhistory.html",params)
-
-
 def index(request):
-    # for key in request.session.keys():
-    #     del request.session[key]
     return render(request, "index.html")
 
 
@@ -73,6 +45,33 @@ def home(request):
     return render(request, "login.html")
 
 
+
+def orderhistory(request,):
+    order = Ordered_item.objects.all()
+    myorders = set()
+    contactno = request.session.get('contact_no')
+    for i in order:
+        # print(i)
+        if i.contact_no == contactno:
+            if i.order_status=="unserved":
+                myorders.add(i)
+    params = {"myorders": myorders}
+    return render(request, "orderhistory.html", params)
+
+def cancleorder(request,identity):
+    myorders=Ordered_item.objects.get(identity=identity)
+    myorders.delete()
+    order = Ordered_item.objects.all()
+    contactno = request.session.get('contact_no')
+    myorders = set()
+    for i in order:
+        # print(i)
+        if i.contact_no == contactno:
+            myorders.add(i)
+    params = {"myorders": myorders}
+    return render(request, "orderhistory.html",params)
+
+
 def showitems(request):
     if request.method == "GET":
         context = {}
@@ -84,8 +83,6 @@ def showitems(request):
         for i in items:
             if i.category == opt:
                 food.add(i)
-        # for i in food:
-        #     ordered_food=","+i.name
         print(request.session.get('contact_no'))
         print(request.session.get('timing'))
         context = {"time": opt, "food": food}
