@@ -27,9 +27,13 @@
 }
 
 
+
+
     </style>
 </head>
-<form>
+<form method="get" action="canteen/option">
+    {% csrf_token %}
+
     <h2> You Have Ordered Successfully </h2><br><br>
     <h5>You can get your oder after 15 minutes from Canteen area....</h5><br>
     <h1>Thank You...</h1>

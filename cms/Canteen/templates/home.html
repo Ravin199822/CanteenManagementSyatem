@@ -35,11 +35,14 @@
     </style>
 </head>
 <body>
-{% csrf_token %}
 
 <h2>Order Items</h2><br><br>
+<!--    <a href="/canteen/orderhistory" class="text-warning stretched-link">My Previous Orders</a>-->
 
 <form action="/canteen/showitems" enctype="multipart/form-data" method="GET">
+        {% csrf_token %}
+
+
     <div class="container">
         <div class="form-group">
             <label>I'm Looking for...</label>

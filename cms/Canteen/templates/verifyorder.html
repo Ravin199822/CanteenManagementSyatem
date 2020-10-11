@@ -9,7 +9,7 @@
     <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" rel="stylesheet">
 
-    <title>The Bangalore Canteen</title>
+    <title>Verify Order</title>
     <style>
             .card-img, .card-img-bottom, .card-img-top {
                     -ms-flex-negative: 0;
@@ -27,8 +27,8 @@
                     color: #212529;
                     text-align: left;
                     padding-top: 5rem;
-                    padding-left: 25rem;
-                    padding-right: 25rem;
+                    padding-left: 20rem;
+                    padding-right: 20rem;
                     padding-bottom: 5rem;
                     background-color: #C7C8CA;
                     }
@@ -46,38 +46,35 @@
 <body>
 {% load static %}
 <div class="alert alert-secondary" role="alert">
-    Welcome to <a class="alert-link" href="http://127.0.0.1:8000/canteen/">The Bangalore Canteen
+    Do you want to cancle order? - <a class="alert-link">The Bangalore Canteen
 </a>.
 </div>
-<form class="container" action="/canteen/register" method="get">
-        {% csrf_token %}
-
-
+<form action="/canteen/successful" class="container" method="get">
+    {% csrf_token %}
     <div class="row">
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Registered User</h5>
-                    <img alt="..." class="card-img-top" src='{% static "user.jpg" %}'>
-                    <p class="card-text">I have Signed up in this system</p>
-                    <a class="btn btn-primary" href="/canteen/login">Sign In as Registred User</a>
+                    <h5 class="card-title">Cancle Order</h5>
+                    <img alt="..." class="card-img-top" src='{% static "ordercancle.jpg" %}'>
+                    <p class="card-text">I want to cancle order.</p>
+                    <a class="btn btn-primary" href="/canteen">Cancle Order</a>
                 </div>
             </div>
         </div>
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Guest</h5>
-                    <img alt="..." class="card-img-top" src='{% static "guest.jpg" %}'>
-                    <p class="card-text">I'm new For this System.</p>
-                    <button class="btn btn-primary" >Sign in as guest User</button>
+                    <h5 class="card-title">Don't cancle order</h5>
+                    <img alt="..." class="card-img-top" src='{% static "order.jpg" %}'>
+                    <p class="card-text">I am sure, I don't want to Cancle. I must receive it</p>
+                    <button class="btn btn-primary">Submit</button>
                 </div>
             </div>
         </div>
     </div>
 </form>
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
 <script crossorigin="anonymous"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

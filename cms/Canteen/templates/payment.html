@@ -32,11 +32,11 @@
 <body>
 {% load static %}
 
-<form action="/canteen/successful" enctype="multipart/form-data" method="GET">
+<form action="/canteen/verifyorder" enctype="multipart/form-data" method="GET">
     {% csrf_token %}
     <h1>You have To Pay...</h1><br>
     <div class="card" style="width: 18rem;">
-        <img alt="..." class="card-img-top" src='{% static "user.jpg" %}'>
+        <img alt="..." class="card-img-top" src='{% static "payment.jpg" %}'>
         <div class="card-body">
             <h5 class="card-title">Payment</h5>
             <p class="card-text">Food Items: {{food_items}}</p>

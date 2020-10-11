@@ -28,49 +28,48 @@
 
 
 
+
+
+
+
+
+
+
+
     </style>
 </head>
 <body>
 <h2> Registration to The Bangalore Canteen! </h2><br><br>
 
-<form>
+<form action="/canteen/login"  enctype="multipart/form-data" method="get">
+    {% csrf_token %}
+
     <div class="form-group">
-        <div class="row">
-            <div class="col">
-                <label for="firstname">First name</label>
-                <input class="form-control" id="firstname" name="firstname" placeholder="First name" type="text">
-            </div>
-            <div class="col">
-                <label for="lastname">Last name</label>
-                <input class="form-control" id="lastname" name="lastname" placeholder="Last name" type="text">
-            </div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="email">Email address</label>
-        <input class="form-control" id="exampleFormControlInput1" id="email" name="email" placeholder="name@example.com"
-               type="email">
-    </div>
-    <div class="form-group">
-        <label for="enrollmentno">Enrollment number</label>
-        <input class="form-control" id="enrollmentno" name="enrollmentno" placeholder="Enrollment number" type="text">
+        <label>Full name</label>
+        <!--            <div class="col-sm-4">-->
+        <!--                {{form.user_name}}-->
+        <!--            </div>-->
+        <input class="form-control" id="name" name="fullname" placeholder="Enter Full name" required
+               type="text">
+
     </div>
 
     <div class="form-group">
-        <label for="contactno">Contact Number</label>
-        <input class="form-control" id="contactno" name="contactno" placeholder="10 digit's Contact number" type="text">
+        <label>Enrollment number</label>
+        <!--        {{form.enrollment_no}}-->
+        <input class="form-control" id="enrollmentno" name="enrollmentno" placeholder="Enrollment number" required
+               type="text">
     </div>
 
-     <div class="form-group">
-        <label for="password">Password</label>
-        <input class="form-control" id="password" name="password" placeholder="Enter Password" type="password">
+    <div class="form-group">
+        <label>Contact Number</label>
+        <!--        {{form.contact_no}}-->
+        <input class="form-control" id="contactno" name="contactno" pattern=".{10,10}"
+               placeholder="10 digit's Contact number" required type="text">
     </div>
-     <div class="form-group">
-        <label for="confirmpassword">Confirm Password</label>
-        <input class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Re-enter Password" type="password">
-    </div>
+
     <br>
-    <a class="btn btn-primary" href="/canteen/login">Sign in as guest User</a>
+    <button class="btn btn-primary" type="submit">Sign in as guest User</button>
 
 
 </form>
