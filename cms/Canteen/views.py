@@ -6,6 +6,8 @@ from .models import Items, Users,Ordered_item
 
 
 def option(request):
+    contact_no = request.GET.get("contact_no", 'default')
+    print(contact_no)
     return render(request, "option.html")
 
 
@@ -29,7 +31,7 @@ def register(request):
 
 def home(request):
     if request.method == "GET":
-        contact_no = request.GET.get("contact_no", 'default')
+        contact_no = request.session.get('contact_no')
         users = Users.objects.all()
         for i in users:
             if i.contact_no == contact_no:
