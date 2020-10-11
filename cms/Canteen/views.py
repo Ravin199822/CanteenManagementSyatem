@@ -9,7 +9,7 @@ def option(request):
     return render(request, "option.html")
 
 
-def orderhistory(request):
+def orderhistory(request,):
     order = Ordered_item.objects.all()
     myorders = set()
     contactno = request.session.get('contact_no')
@@ -17,8 +17,15 @@ def orderhistory(request):
         # print(i)
         if i.contact_no == contactno:
             myorders.add(i)
+
+
     params = {"myorders": myorders}
     return render(request, "orderhistory.html", params)
+
+def cancleorder(request,identity):
+    myorders=Ordered_item.objects.get(identity=identity)
+    myorders.delete()
+    return render(request, "orderhistory.html")
 
 
 def index(request):
@@ -47,8 +54,8 @@ def home(request):
         users = Users.objects.all()
         for i in users:
             if i.contact_no == contact_no:
-                request.session['cotact_no'] = str(contact_no)
-                print(request.session.get('contact_no'))
+                request.session['contact_no'] = str(contact_no)
+                print("51"+request.session.get('contact_no'))
                 # add_order=Orders.objects.create(users=i)
                 times = set()
                 items = Items.objects.all()
