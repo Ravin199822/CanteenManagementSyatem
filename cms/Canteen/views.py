@@ -17,15 +17,21 @@ def orderhistory(request,):
         # print(i)
         if i.contact_no == contactno:
             myorders.add(i)
-
-
     params = {"myorders": myorders}
     return render(request, "orderhistory.html", params)
 
 def cancleorder(request,identity):
     myorders=Ordered_item.objects.get(identity=identity)
     myorders.delete()
-    return render(request, "orderhistory.html")
+    order = Ordered_item.objects.all()
+    contactno = request.session.get('contact_no')
+    myorders = set()
+    for i in order:
+        # print(i)
+        if i.contact_no == contactno:
+            myorders.add(i)
+    params = {"myorders": myorders}
+    return render(request, "orderhistory.html",params)
 
 
 def index(request):
