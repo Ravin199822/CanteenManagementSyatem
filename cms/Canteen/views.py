@@ -16,7 +16,8 @@ def orderhistory(request,):
     for i in order:
         # print(i)
         if i.contact_no == contactno:
-            myorders.add(i)
+            if i.order_status=="unserved":
+                myorders.add(i)
     params = {"myorders": myorders}
     return render(request, "orderhistory.html", params)
 
